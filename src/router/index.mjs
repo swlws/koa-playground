@@ -1,11 +1,17 @@
 import Router from '@koa/router';
-import userRouter from './user.mjs';
 import homeRouter from './home.mjs';
+import videoRouter from './video.mjs';
+
+const prefix = '/api';
 
 const router = new Router();
 
 // 聚合子路由
-router.use('/user', userRouter.routes(), userRouter.allowedMethods());
-router.use('/', homeRouter.routes(), homeRouter.allowedMethods());
+router.use(prefix, homeRouter.routes(), homeRouter.allowedMethods());
+router.use(
+  `${prefix}/video`,
+  videoRouter.routes(),
+  videoRouter.allowedMethods()
+);
 
 export default router;
