@@ -5,7 +5,7 @@
   "main": "src/app.mjs",
   "type": "module",
   "scripts": {
-    "dev": "node src/app.mjs"
+    "dev": "nodemon"
   },
   "node": ">= 20",
   "keywords": [],
@@ -17,5 +17,8 @@
     "koa-router": "^14.0.0",
     "koa2-cors": "^2.0.6",
     "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
   }
 }
