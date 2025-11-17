@@ -7,6 +7,16 @@
   resolved "https://registry.npmmirror.com/@hapi/bourne/-/bourne-3.0.0.tgz#f11fdf7dda62fe8e336fa7c6642d9041f30356d7"
   integrity sha512-Waj1cwPXJDucOib4a3bAISsKJVb15MKi9IvmTI/7ssVEm6sywXGjVJDhl6/umt1pK1ZS7PacXU3A1PmFKHEZ2w==
 
+"@koa/router@^14.0.0":
+  version "14.0.0"
+  resolved "https://registry.npmmirror.com/@koa/router/-/router-14.0.0.tgz#c0b8f130d8134674607e22ed856a2772949243cf"
+  integrity sha512-LBSu5K0qAaaQcXX/0WIB9PGDevyCxxpnc1uq13vV/CgObaVxuis5hKl3Eboq/8gcb6ebnkAStW9NB/Em2eYyFA==
+  dependencies:
+    debug "^4.4.1"
+    http-errors "^2.0.0"
+    koa-compose "^4.1.0"
+    path-to-regexp "^8.2.0"
+
 "@noble/hashes@^1.1.5":
   version "1.8.0"
   resolved "https://registry.npmmirror.com/@noble/hashes/-/hashes-1.8.0.tgz#cee43d801fcef9644b11b8194857695acd5f815a"
@@ -554,16 +564,6 @@ koa-compose@^4.1.0:
   version "4.1.0"
   resolved "https://registry.npmmirror.com/koa-compose/-/koa-compose-4.1.0.tgz#507306b9371901db41121c812e923d0d67d3e877"
   integrity sha512-8ODW8TrDuMYvXRwra/Kh7/rJo9BtOfPc6qO8eAfC80CnCvSjSl0bkRM24X6/XBBEyj0v1nRUQ1LyOy3dbqOWXw==
-
-koa-router@^14.0.0:
-  version "14.0.0"
-  resolved "https://registry.npmmirror.com/koa-router/-/koa-router-14.0.0.tgz#67b15730971e574c86333ca2ea1fa9ed1b0d4505"
-  integrity sha512-Ue8f/PRsLLNm6b7y+eS6xkqvsG2xH11d2VB1HPcfdfW6p5736kCHf2pXaq8q9XPQ01x0Dk7V/P5Il9pe+tGTxA==
-  dependencies:
-    debug "^4.4.1"
-    http-errors "^2.0.0"
-    koa-compose "^4.1.0"
-    path-to-regexp "^8.2.0"
 
 koa2-cors@^2.0.6:
   version "2.0.6"

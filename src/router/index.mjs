@@ -1,4 +1,4 @@
-import Router from 'koa-router';
+import Router from '@koa/router';
 import userRouter from './user.mjs';
 import homeRouter from './home.mjs';
 

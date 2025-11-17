@@ -1,4 +1,4 @@
-import Router from 'koa-router';
+import Router from '@koa/router';
 import { getUser, login } from '../interface/user.mjs';
 const router = new Router();
 
