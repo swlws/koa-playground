@@ -1,13 +1,22 @@
 import Koa from 'koa';
 import cors from 'koa2-cors';
 import koaBody from 'koa-body';
+import koaStatic from 'koa-static';
 import { WebSocketServer } from 'ws';
 import http from 'http';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 import router from './router/index.mjs';
 import { handleWsConnection } from './router/ws.mjs';
 
 const app = new Koa();
+
+// 静态资源中间件（托管 public 目录）
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(koaStatic(path.join(__dirname, '../public')));
 
 // --- 常用能力 ---
 app.use(cors()); // 支持跨域
