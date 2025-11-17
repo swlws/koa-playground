@@ -1,0 +1,21 @@
+{
+  "name": "koa-playground",
+  "version": "1.0.0",
+  "description": "koa playground",
+  "main": "src/app.mjs",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/app.mjs"
+  },
+  "node": ">= 20",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^3.1.1",
+    "koa-body": "^7.0.0",
+    "koa-router": "^14.0.0",
+    "koa2-cors": "^2.0.6",
+    "ws": "^8.18.3"
+  }
+}
