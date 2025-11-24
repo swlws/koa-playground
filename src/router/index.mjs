@@ -1,6 +1,7 @@
 import Router from '@koa/router';
 import homeRouter from './home.mjs';
 import videoRouter from './video.mjs';
+import sseRouter from './sse.mjs';
 
 const prefix = '/api';
 
@@ -13,5 +14,6 @@ router.use(
   videoRouter.routes(),
   videoRouter.allowedMethods()
 );
+router.use(`${prefix}/sse`, sseRouter.routes(), sseRouter.allowedMethods());
 
 export default router;

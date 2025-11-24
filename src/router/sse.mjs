@@ -1,8 +1,8 @@
 import Router from '@koa/router';
-import { getStaticVideo } from '../interface/video.mjs';
+import { keepAliveConnection } from '../interface/sse.mjs';
 
 const router = new Router();
 
-router.get('/sse', getStaticVideo);
+router.get('/', keepAliveConnection);
 
 export default router;

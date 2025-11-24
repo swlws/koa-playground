@@ -2,7 +2,8 @@ import {
   getSSEClient,
   cacheSSEClient,
   removeCachedSSEClient,
-  sendMessageToSSEClient,
+  sendMockMessageToAllSSEClients,
+  sendConnectedMessageToSSEClient,
 } from '../biz/sse/index.mjs';
 
 const DEFAULT_SSE_HEADERS = {
@@ -14,14 +15,21 @@ const DEFAULT_SSE_HEADERS = {
 export function keepAliveConnection(ctx) {
   ctx.set(DEFAULT_SSE_HEADERS);
   ctx.status = 200;
+  ctx.respond = false; // ⚠️ 必须添加
 
   const client = getSSEClient(ctx);
 
   cacheSSEClient(client);
 
-  sendMessageToSSEClient(client, { msg: 'hello' });
+  sendConnectedMessageToSSEClient(client);
+
+  if (!global.__MOCK_STARTED__) {
+    sendMockMessageToAllSSEClients();
+    global.__MOCK_STARTED__ = true;
+  }
 
   ctx.req.on('close', () => {
+    console.log('connection closed');
     removeCachedSSEClient(client);
   });
 }
