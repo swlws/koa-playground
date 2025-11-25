@@ -1,4 +1,5 @@
 {
+  "verbose": true,
   "watch": ["src"],
   "ext": "mjs,json",
   "ignore": ["node_modules/*", "src/**/*.test.mjs"],
