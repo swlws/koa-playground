@@ -15,7 +15,7 @@ module.exports = {
        * Instance 配置
        * max = 使用所有 CPU 核心
        **/
-      instances: '1',
+      instances: '1', // max
       exec_mode: 'cluster', // cluster/fork
 
       /**
