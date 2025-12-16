@@ -19,7 +19,9 @@ export function keepAliveConnection(ctx) {
 
   const client = getSSEClient(ctx);
 
-  cacheSSEClient(client);
+  // client 的唯一标识
+  const uuid = ctx.request.query.uuid;
+  cacheSSEClient(uuid, client);
 
   sendConnectedMessageToSSEClient(client);
 
@@ -30,6 +32,6 @@ export function keepAliveConnection(ctx) {
 
   ctx.req.on('close', () => {
     console.log('connection closed');
-    removeCachedSSEClient(client);
+    removeCachedSSEClient(uuid, client);
   });
 }

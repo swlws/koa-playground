@@ -3,9 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Koa</title>
+    <title>Document</title>
   </head>
   <body>
-    loading...
+    <textarea id="content"></textarea>
+    <button id="send">发送</button>
+
+    <script>
+      window.uuid = Math.random().toString(36).substring(7);
+    </script>
+    <script>
+      const content = document.getElementById('content');
+      const send = document.getElementById('send');
+
+      send.addEventListener('click', () => {
+        fetch('http://localhost:3000/api/ai/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'SSE-UUID': window.uuid,
+          },
+          body: JSON.stringify({
+            message: content.value,
+          }),
+        }).then(async (res) => {
+          const result = await res.json();
+          console.log(result);
+        });
+      });
+    </script>
+
+    <script>
+      function createSSE(url, handlers = {}) {
+        const evt = new EventSource(url);
+
+        evt.onmessage = (e) => handlers.message?.(JSON.parse(e.data));
+        evt.onerror = (err) => handlers.error?.(err);
+
+        Object.keys(handlers).forEach((event) => {
+          if (event !== 'message' && event !== 'error') {
+            evt.addEventListener(event, (e) =>
+              handlers[event]?.(JSON.parse(e.data))
+            );
+          }
+        });
+
+        return evt;
+      }
+
+      const sse = createSSE(
+        'http://localhost:3000/api/sse?uuid=' + window.uuid,
+        {
+          connected: (data) => console.log('连接:', data),
+          log: (msg) => console.log('日志消息:', msg),
+          error: () => {
+            sse.close();
+            console.log('自动重连中...');
+          },
+          message: (data) => console.log('消息:', data),
+        }
+      );
+    </script>
   </body>
 </html>

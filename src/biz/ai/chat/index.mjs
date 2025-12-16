@@ -28,7 +28,7 @@ class ChatAi {
         messages: [...this.messages, ...messages],
       });
 
-      return completion;
+      return completion.choices;
     } catch (err) {
       console.log(err);
       return null;

@@ -1,15 +1,19 @@
-const clients = new Set();
+const clientMap = new Map();
 
 export function getSSEClient(ctx) {
   return ctx.res;
 }
 
-export function cacheSSEClient(client) {
-  clients.add(client);
+export function cacheSSEClient(uuid, client) {
+  clientMap.set(uuid, client);
 }
 
-export function removeCachedSSEClient(client) {
-  clients.delete(client);
+export function getCachedSSEClient(uuid) {
+  return clientMap.get(uuid);
+}
+
+export function removeCachedSSEClient(uuid) {
+  clientMap.delete(uuid);
 }
 
 export function sendConnectedMessageToSSEClient(client) {
@@ -25,13 +29,13 @@ let mockStarted = false;
 
 export function sendMockMessageToAllSSEClients() {
   if (mockStarted) return;
-  mockStarted = true;
+  // mockStarted = true;
 
-  setInterval(() => {
-    clients.forEach((client) => {
-      sendMessageToSSEClient(client, {
-        message: 'mock message',
-      });
-    });
-  }, 1000);
+  // setInterval(() => {
+  //   clients.forEach((client) => {
+  //     sendMessageToSSEClient(client, {
+  //       message: 'mock message',
+  //     });
+  //   });
+  // }, 1000);
 }
