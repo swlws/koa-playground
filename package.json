@@ -18,6 +18,7 @@
     "koa-body": "^7.0.0",
     "koa-static": "^5.0.0",
     "koa2-cors": "^2.0.6",
+    "openai": "^6.13.0",
     "ws": "^8.18.3"
   },
   "devDependencies": {

@@ -769,6 +769,11 @@ once@^1.4.0:
   dependencies:
     wrappy "1"
 
+openai@^6.13.0:
+  version "6.13.0"
+  resolved "https://registry.npmmirror.com/openai/-/openai-6.13.0.tgz#db1ddaace8fda170d518df367298c2024b961c72"
+  integrity sha512-yHbMo+EpNGPG3sRrXvmo0LhUPFN4bAURJw3G17bE+ax1G4tcTFCa9ZjvCWh3cvni0aHY0uWlk2IxcsPH4NR9Ow==
+
 parseurl@^1.3.3:
   version "1.3.3"
   resolved "https://registry.npmmirror.com/parseurl/-/parseurl-1.3.3.tgz#9da19e7bee8d12dff0513ed5b76957793bc2e8d4"
