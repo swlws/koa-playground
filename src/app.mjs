@@ -20,7 +20,15 @@ app.use(koaStatic(path.join(__dirname, '../public')));
 
 // --- 常用能力 ---
 app.use(cors()); // 支持跨域
-app.use(koaBody()); // 支持 JSON body / form-data / 文件上传
+app.use(
+  koaBody({
+    multipart: true,
+    formidable: {
+      keepExtensions: true,
+      maxFileSize: 200 * 1024 * 1024, // 200MB
+    },
+  })
+); // 支持 JSON body / form-data / 文件上传
 
 // 注册路由
 app.use(router.routes());

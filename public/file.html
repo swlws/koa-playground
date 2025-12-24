@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>File Upload</title>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont;
+        padding: 40px;
+      }
+      .box {
+        border: 2px dashed #ccc;
+        padding: 20px;
+        width: 320px;
+      }
+      button {
+        margin-top: 12px;
+      }
+      pre {
+        background: #f6f8fa;
+        padding: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>文件上传测试</h2>
+
+    <div class="box">
+      <input type="file" id="fileInput" />
+      <br />
+      <button id="uploadBtn">上传</button>
+    </div>
+
+    <h3>返回结果</h3>
+    <pre id="result"></pre>
+
+    <script>
+      const input = document.getElementById('fileInput');
+      const btn = document.getElementById('uploadBtn');
+      const result = document.getElementById('result');
+
+      btn.onclick = async () => {
+        if (!input.files.length) {
+          alert('请选择文件');
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append('file', input.files[0]);
+
+        result.textContent = 'Uploading...';
+
+        try {
+          const res = await fetch('/api/file/upload', {
+            method: 'POST',
+            body: formData,
+          });
+
+          const data = await res.json();
+          result.textContent = JSON.stringify(data, null, 2);
+        } catch (err) {
+          result.textContent = err.message;
+        }
+      };
+    </script>
+  </body>
+</html>
